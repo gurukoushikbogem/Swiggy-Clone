@@ -1,0 +1,56 @@
+<input type="text" [(ngModel)]="searchQuery" placeholder="Search for an item..." (keyup.enter)="onSearch()" class="border border-gray-300 rounded-lg px-4 py-2 w-full mr-4 shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-500 transition duration-200 ease-in-out hover:border-gray-400" />
+
+<div class="container mx-auto py-8">
+
+    <div class="flex justify-between items-center mb-6">
+        <button (click)="previous()"
+            class="text-gray-600 bg-gray-200 rounded-full p-2 focus:outline-none hover:bg-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-chevron-left">
+                <path fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L4.707 9l6.647 6.646a.5.5 0 0 1-.708.708l-7-7a.5.5 0 0 1 0-.708l7-7a.5.5 0 0 1 .708 0z" />
+            </svg>
+        </button>
+
+        <h2 class="text-2xl font-bold text-gray-800">Order our best food options</h2>
+
+        <button (click)="next()"
+            class="text-gray-600 bg-gray-200 rounded-full p-2 focus:outline-none hover:bg-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-chevron-right">
+                <path fill-rule="evenodd"
+                    d="M8.646 1.646a.5.5 0 0 1 .708 0l7 7a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708L14.293 9 8.646 3.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="grid grid-cols-7 gap-4">
+        <div *ngFor="let item of visibleItems" (click)="onItemSelect(item.name)" class="p-4 cursor-pointer">
+            <img [src]="item.image" [alt]="item.name" class="food-image" />
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto py-8">
+    <div class="flex justify-center items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Shop groceries on instamart</h2> 
+    </div>
+    <div class="flex gap-10 overflow-x-auto scrollbar-hide p-4">
+        <div *ngFor="let item of visibleItems1" class="shrink-0 cursor-pointer w-40">
+            <img [src]="item.image" class="food-image w-full h-auto rounded-lg object-cover" />
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto py-8">
+    <div class="flex justify-center items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Shop groceries on instamart</h2>
+    </div>
+    <div class="flex gap-6 overflow-x-auto scrollbar-hide pb-4">
+        <img src="assets/p1.jpg" alt="Restaurant Image 1" class="w-80 rounded-lg shadow-lg">
+        <img src="assets/p2.jpg" alt="Restaurant Image 2" class="w-80 rounded-lg shadow-lg">
+        <img src="assets/p3.jpg" alt="Restaurant Image 3" class="w-80 rounded-lg shadow-lg">
+        <img src="assets/p4.jpg" alt="Restaurant Image 4" class="w-80 rounded-lg shadow-lg">      
+        <img src="assets/p5.jpg" alt="Restaurant Image 4" class="w-80 rounded-lg shadow-lg">
+    </div>
+</div>

@@ -1,0 +1,139 @@
+<!-- This part is unresponsive even in original website it is unresponsive  -->
+<!-- As there are two images to two corners could not align the responsivenes correctly  -->
+
+<nav class="bg-[#FF5200] flex justify-between items-center p-4 px-32">
+    <a href="/" class="flex items-center space-x-2">
+        <img src="assets/logo.jpg" alt="Swiggy Logo" class="h-8 w-200" />
+    </a>
+    <div class="flex items-center space-x-6 text-white">
+        <a href="https://www.swiggy.com/corporate/" target="_blank" class="text-sm font-medium hover:underline">
+            Swiggy Corporate
+        </a>
+        <a href="https://partner.swiggy.com/login#/swiggy" target="_blank" class="text-sm font-medium hover:underline">
+            Partner with us
+        </a>
+        <a href="#" class="flex items-center text-sm font-medium border border-white px-4 py-2 rounded">
+            Get the App
+        </a>
+
+        <button *ngIf="isUserLoggedIn; else signInButton" (click)="logOut()" class="bg-[#000000] px-6 py-2 rounded-lg">
+            <span class="text-white p-8 rounded text-sm font-medium">Log out</span>
+        </button>
+        <ng-template #signInButton>
+            <button (click)="toggleDrawer()" class="bg-[#000000] px-6 py-2 rounded-lg">
+                <span class="text-white text-lg font-medium">Sign in</span>
+            </button>
+
+        </ng-template>
+    </div>
+</nav>
+
+<!-- Code for Drawer From Tailwind css -->
+<div *ngIf="isDrawerOpen" class="fixed inset-0 z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" (click)="toggleDrawer()" aria-hidden="true">
+    </div>
+    <div class="fixed inset-0 overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div class="pointer-events-auto relative w-screen max-w-md bg-white shadow-xl">
+                    <div class="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
+                        <button (click)="toggleDrawer()" type="button"
+                            class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                            <span class="sr-only">Close panel</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex h-full flex-col overflow-y-scroll py-6">
+                        <div class="mt-6 flex-1 px-4 sm:px-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-2xl text-gray-900">{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
+                                    <p class="text-sm text-gray-600 mt-1">
+                                        {{ isLoginMode ? 'or' : 'Already have an account? ' }}
+                                        <a href="#" (click)="toggleMode()" class="text-[#FF5200] font-medium">
+                                            {{ isLoginMode ? 'create an account' : 'login to your account' }}
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="ml-4">
+                                    <img src="assets/frankie.jpg" alt="Food Image" class="h-16 w-16 rounded-full" />
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <input type="text" placeholder="Phone number" [(ngModel)]="phoneNumber"
+                                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5200] text-gray-700">
+
+                                <input *ngIf="!isLoginMode" type="text" placeholder="Name" [(ngModel)]="name"
+                                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5200] text-gray-700 mt-4">
+                                <input *ngIf="!isLoginMode" type="email" placeholder="Email" [(ngModel)]="email"
+                                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5200] text-gray-700 mt-4">
+                            </div>
+                            <div class="mt-4">
+                                <button (click)="onContinue()"
+                                    class="w-full bg-[#FF5200] text-white py-3 rounded-md font-medium hover:bg-[#e44b00] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF5200]">
+                                    {{ isLoginMode ? 'LOGIN' : 'CONTINUE' }}
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-4 text-center">
+                                By clicking on {{ isLoginMode ? 'Login' : 'Continue' }}, I accept the
+                                <a href="#" class="text-[#FF5200] font-medium">Terms & Conditions</a> &
+                                <a href="#" class="text-[#FF5200] font-medium">Privacy Policy</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-[#FF5200] flex items-center">
+    <img class="w-1/5 h-auto"
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/testing/seo-home/Veggies_new.png"
+        alt="left_img" />
+    <div class="flex flex-col items-center text-center">
+        <div class="text-[3rem] font-semibold text-[#FFFFFF]">
+            Order food & groceries. Discover best restaurants. Swiggy it!
+        </div>
+        <div class="flex items-center space-x-3  p-5 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 18 23" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10.115 21.8122C12.4772 19.4062 17.7886 13.4751 17.7886 8.78883C17.7886 3.79647 13.9976 0 9.00526 0C4.0129 0 0.210938 3.79647 0.210938 8.78883C0.210938 13.4755 5.52998 19.4073 7.89476 21.8129C8.51149 22.4403 9.49871 22.44 10.115 21.8122ZM8.99988 12.7888C11.4269 12.7888 13.3943 10.8214 13.3943 8.39441C13.3943 5.96745 11.4269 4 8.99988 4C6.57292 4 4.60547 5.96745 4.60547 8.39441C4.60547 10.8214 6.57292 12.7888 8.99988 12.7888Z"
+                    fill="#FF5200"></path>
+            </svg>
+            <input type="text" placeholder="Enter your delivery location"
+                class="bg-white text-lg p-3 w-65 h-14 focus:outline-none focus:ring-2 focus:ring-[#FF5200] shadow-sm" />
+            <div
+                class="flex items-center bg-white border border-gray-300 rounded-lg p-4 shadow-lg cursor-pointer w-full h-14">
+                <span class="text-lg text-gray-700 flex-grow">Search for restaurant, item or more</span>
+                
+                <svg aria-hidden="true" height="30" width="30" fill="currentColor">
+                    <path
+                        d="M9.5 3C6.46243 3 4 5.46243 4 8.5C4 11.5376 6.46243 14 9.5 14C10.5136 14 11.4525 13.7243 12.25 13.25L15.75 16.75L17 15.5L13.5 12C14.7243 11.0573 15.5 9.61305 15.5 8.5C15.5 5.46243 13.0376 3 10 3H9.5ZM9.5 4.5C11.433 4.5 13 6.067 13 8C13 9.933 11.433 11.5 9.5 11.5C7.567 11.5 6 9.933 6 8C6 6.067 7.567 4.5 9.5 4.5Z" />
+                </svg>
+            </div>
+        </div>
+        <div class="flex space-x-6  p-4 items-center justify-center">
+            <div>
+                <img src="assets/delivery.jpg" alt="Food" class="w-30 h-50" />
+            </div>
+            <div>
+                <img src="assets/instamart.jpg" alt="Food" class="w-30 h-50" />
+            </div>
+            <div>
+                <img src="assets/dineout.jpg" alt="Food" class="w-30 h-50" />
+            </div>
+            <div>
+                <img src="assets/genie.jpg" alt="Food" class="w-30 h-50" />
+            </div>
+        </div>
+    </div>
+    <img class="w-1/5 h-auto" src="assets/right.jpg" alt="right_img" />
+</div>
+<app-food-items></app-food-items>
+<app-promotion-banner></app-promotion-banner>
+<app-footer></app-footer>

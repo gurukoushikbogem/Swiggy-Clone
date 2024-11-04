@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="p-6 max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900">{{ restaurantName }} </h2>
+        <p class="text-lg text-gray-600">Your selected items are ready for checkout</p>
+    </div>
+
+    <div *ngFor="let item of cartItems"
+        class="bg-white shadow-lg rounded-lg p-4 mb-4 flex justify-between items-center border border-gray-200">
+        <div class="flex flex-col">
+            <p class="text-lg font-semibold text-gray-800">{{ item.name }}</p>
+            <span class="text-green-600 font-bold text-lg">₹{{ item.price }} x {{ item.quantity }}</span>
+        </div>
+    </div>
+
+    <div class="mt-6 text-right">
+        <p class="text-xl font-bold text-gray-800">Total Price: ₹{{ totalPrice }}</p>
+
+        <button *ngIf="isLoggedIn" (click)="onCheckout()"
+            class="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">
+            Checkout
+        </button>
+
+        <p *ngIf="!isLoggedIn" class="mt-4 text-red-600 font-bold">You need to log in first to place an order!</p>
+    </div>
+</div>

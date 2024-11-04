@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="container mx-auto py-8">
+    <h2 class="text-2xl font-bold mb-4">{{ itemName }} Restaurants</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div *ngFor="let restaurant of filteredRestaurants" (click)="viewRestaurantDetails(restaurant.name)" class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative">
+                <img [src]="restaurant.image" alt="{{ restaurant.name }}" class="w-full h-40 object-cover">
+            </div>
+            <div class="p-4">
+                <h3 class="text-lg font-semibold">{{ restaurant.name }}</h3>
+                <p class="text-gray-500">{{ restaurant.rating }} &#9733; • {{ restaurant.deliveryTime }}</p>
+                <p class="text-gray-700">{{ restaurant.location }}</p>
+            </div>
+        </div>
+    </div>
+</div>

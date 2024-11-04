@@ -1,0 +1,29 @@
+<nav class="flex items-center justify-between p-4 shadow-md bg-[#FF5200]">
+    <div class="flex items-center space-x-4">
+        <a href="/">
+        <img src="assets/logo.jpg" alt="Logo" class="h-8 w-200" />
+        </a>
+    </div>
+
+    <div class="flex items-center space-x-6">
+
+        <a href="#" class="flex items-center text-white hover:text-gray-900 space-x-1">
+            <span>Swiggy Corporate</span>
+        </a>
+
+        <a href="#" class="text-white hover:text-gray-900">Search</a>
+        <a href="#" class="text-white hover:text-gray-900">Help</a>
+
+        <a *ngIf="!isLoggedIn" (click)="handleAuthAction()" class="text-white hover:text-gray-900">Sign In</a>
+        <a *ngIf="isLoggedIn" (click)="handleAuthAction()" class="text-white hover:text-gray-900">Log Out</a>
+
+        <span *ngIf="isLoggedIn" class="text-white">Welcome , {{ user?.name }}</span>
+
+        <a href="/cart" class="relative flex items-center text-white hover:text-gray-900">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3h18v2H3zm0 7h18v2H3zm0 7h18v2H3zm0-12h2v2H3zm14 5h2v2h-2zm-7 0h2v2H9z" />
+            </svg>
+            <span>Cart</span>
+        </a>
+    </div>
+</nav>
